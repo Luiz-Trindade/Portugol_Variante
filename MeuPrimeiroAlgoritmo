@@ -1,0 +1,10 @@
+algoritmo MeuPrimeiroAlgoritmo
+
+texto: mensagem
+
+início
+
+	mensagem <- "Olá, Mundo!"
+	escreva mensagem
+
+fim
