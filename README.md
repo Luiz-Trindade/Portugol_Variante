@@ -38,6 +38,8 @@ Para utilizar o interpretador, siga as instruções abaixo:
 
 - **escreva:** Comando para imprimir na saída.
 
+- **leia** Comando para ler dados de entrada.
+
 - **fim:** Indica o fim do programa.
 
 ### Exemplo Básico

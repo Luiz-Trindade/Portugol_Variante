@@ -11,6 +11,25 @@ version_text = """
     in an browser the for details.
 """
 
+manual = """
+    *MANUAL DOS COMANDOS DISPONÍVEIS*
+    ---------------------------------
+    1. `algoritmo`: Define o início do programa.
+    Exemplo: `algoritmo MeuPrograma`
+
+    2. `inicio`: Inicia o bloco de código principal.
+    Exemplo: `inicio`
+
+    3. `fim`: Indica o fim do programa.
+    Exemplo: `fim`
+
+    4. `escreva`: Exibe informações na saída.
+    Exemplo: `escreva "Olá, Mundo!"`
+
+    5. `leia`: Lê dados da entrada do usuário.
+    Exemplo: `leia variavel`    
+"""
+
 #Definição de variáveis do interpretador
 program_name        = str("")
 program_content     = []
@@ -30,10 +49,12 @@ def ReadCode():
     try:
         program_name = str(argv[1])
         if program_name == "-v":
-            print(version_text)
-            exit()
-    except IndexError:
-        Die("Defina o programa!")
+            Die(version_text)
+        elif program_name == "manual":
+            Die(manual)
+
+    except:
+        Die("Ou o programa não existe, ou não foi digitado corretamente ou não foi informado!   ")
 
     with open(program_name, "r") as file:
         content = file.readlines()
@@ -48,7 +69,18 @@ def InterpretCode():
     #Funções Principais
     def Escreva(*args):
         cleaned_args = [str(arg).strip('"') for arg in args]
-        stdout.write(" ".join(cleaned_args) + " ")
+        stdout.write("".join(cleaned_args) + " ")
+
+    def Leia():
+        variables = tokens[1:]
+        for var in variables:
+            try:
+                if type(program_variables[var]) == float:
+                    program_variables[var] = float(input())
+                else:
+                    program_variables[var] = str(input())
+            except:
+                input()
 
     #Implementação da interpretação do cabeçalho do programa
     while program_content[counter] != "inicio":
@@ -66,14 +98,12 @@ def InterpretCode():
             text_variables = tokens[1:]
             for name in text_variables:
                 program_variables[name] = ""
-            pass
 
         #Declaração da variáevis numéricas
         elif tokens[0] == "numero:":
             text_variables = tokens[1:]
             for name in text_variables:
                 program_variables[name] = float(0)
-            pass
 
         #Verifica o início do programa para parar de interpretar o cabeçalho
         #e iniciar a interpretar o programa em si
@@ -106,6 +136,10 @@ def InterpretCode():
                 try:
                     program_variables[var_name] = float(var_content)
                 except: program_variables[var_name] = var_content
+
+        #Leitura de dados recebidos do teclado
+        elif function == "leia":
+            Leia()
 
         #Interpretação do fim do programa
         elif program_length == counter:

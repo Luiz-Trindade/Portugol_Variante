@@ -1,6 +1,6 @@
 algoritmo MeuPrimeiroAlgoritmo
 
-texto: mensagem
+texto: mensagem teste
 numero: n1 n2
 
 inicio
@@ -10,9 +10,12 @@ inicio
 
 	escreva "Olá, pessoal!"
 
-	n1 <- 10
-	n2 <- 20
+	n1 <- 10.5
+	n2 <- 20.3
 
 	escreva "Primeira variável:" n1 " Segunda variável:" n2
+
+	leia teste
+	escreva teste
 	
 fim
