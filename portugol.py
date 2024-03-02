@@ -47,13 +47,14 @@ def Die(msg):
 #para ser interpretado posteriormente
 def ReadCode():
     global program_name, program_content, program_length
+
+    if "-v" in argv:
+        Die(version_text)
+    elif "manual" in argv:
+        Die(manual)
+
     try:
         program_name = str(argv[1])
-        if program_name == "-v":
-            Die(version_text)
-        elif program_name == "manual":
-            Die(manual)
-
     except:
         Die("Ou o programa não existe, ou não foi digitado corretamente ou não foi informado!")
 
