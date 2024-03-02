@@ -1,4 +1,4 @@
-from sys import argv, stdout
+from sys import argv, stdout, exit
 
 #Definição do texto de versão
 version_text = """
@@ -11,6 +11,7 @@ version_text = """
     in an browser the for details.
 """
 
+#Definição do manual
 manual = """
     *MANUAL DOS COMANDOS DISPONÍVEIS*
     ---------------------------------
@@ -54,7 +55,7 @@ def ReadCode():
             Die(manual)
 
     except:
-        Die("Ou o programa não existe, ou não foi digitado corretamente ou não foi informado!   ")
+        Die("Ou o programa não existe, ou não foi digitado corretamente ou não foi informado!")
 
     with open(program_name, "r") as file:
         content = file.readlines()
@@ -135,7 +136,7 @@ def InterpretCode():
                 var_content = tokens[2:]
                 try:
                     program_variables[var_name] = float(var_content)
-                except: program_variables[var_name] = var_content
+                except: program_variables[var_name] = " ".join(var_content)
 
         #Leitura de dados recebidos do teclado
         elif function == "leia":
