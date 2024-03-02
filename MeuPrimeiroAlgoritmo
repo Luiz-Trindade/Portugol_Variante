@@ -1,10 +1,18 @@
 algoritmo MeuPrimeiroAlgoritmo
 
 texto: mensagem
+numero: n1 n2
 
-início
+inicio
 
 	mensagem <- "Olá, Mundo!"
 	escreva mensagem
 
+	escreva "Olá, pessoal!"
+
+	n1 <- 10
+	n2 <- 20
+
+	escreva "Primeira variável:" n1 " Segunda variável:" n2
+	
 fim
