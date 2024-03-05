@@ -1,10 +1,9 @@
 algoritmo MeuPrimeiroAlgoritmo
 
-texto: mensagem teste
+texto: mensagem teste teste2
 numero: n1 n2
 
 inicio
-
 	mensagem <- "Olá, Mundo!"
 	escreva mensagem
 
@@ -17,5 +16,9 @@ inicio
 
 	leia teste
 	escreva teste
-	
+
+	teste2 <- "oi olá oi olá"
+	escreva teste2
+
+	escreva 1 + 1
 fim

@@ -121,13 +121,18 @@ def InterpretCode():
 
         #Chamada da função "escreva"
         if function == "escreva":
-            content_to_write = tokens[1:]
-            for i in content_to_write:
-                if i in program_variables:
-                    Escreva(*program_variables[i])
-                else:
-                    Escreva(i)
-            print("")
+            try:
+                content_to_write = tokens[1:]
+                Escreva(eval("".join(content_to_write)))
+                print("")
+            except:
+                content_to_write = tokens[1:]
+                for i in content_to_write:
+                    if i in program_variables:
+                        Escreva(*program_variables[i])
+                    else:
+                        Escreva(i)
+                print("")
 
         #Atribuição de valor às variáveis
         elif function in program_variables:
