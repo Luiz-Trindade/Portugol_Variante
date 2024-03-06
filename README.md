@@ -40,6 +40,8 @@ Para utilizar o interpretador, siga as instruções abaixo:
 
 - **leia** Comando para ler dados de entrada.
 
+- **vaipara** Comando para pular para uma determinada linha.
+
 - **fim:** Indica o fim do programa.
 
 ### Exemplo Básico
