@@ -14,11 +14,14 @@ inicio
 
 	escreva "Primeira variável:" n1 " Segunda variável:" n2
 
-	leia teste
-	escreva teste
+	#leia teste
+	#escreva teste
 
 	teste2 <- "oi olá oi olá"
 	escreva teste2
 
-	escreva 1 + 1
+	escreva "Cálculo: " 1+1
+	escreva 1+1
+
+	vaipara 10
 fim

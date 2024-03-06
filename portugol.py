@@ -1,4 +1,5 @@
 from sys import argv, stdout, exit
+from time import sleep
 
 #Definição do texto de versão
 version_text = """
@@ -121,12 +122,11 @@ def InterpretCode():
 
         #Chamada da função "escreva"
         if function == "escreva":
+            content_to_write = tokens[1:]
             try:
-                content_to_write = tokens[1:]
-                Escreva(eval("".join(content_to_write)))
+                Escreva(eval(" ".join(content_to_write)))
                 print("")
             except:
-                content_to_write = tokens[1:]
                 for i in content_to_write:
                     if i in program_variables:
                         Escreva(*program_variables[i])
@@ -147,6 +147,15 @@ def InterpretCode():
         #Leitura de dados recebidos do teclado
         elif function == "leia":
             Leia()
+
+        elif function == "vaipara":
+            try:
+                line_to_go = int(tokens[1])-1
+                counter = line_to_go
+                sleep(0.00001)
+                continue
+            except:
+                exit()
 
         #Interpretação do fim do programa
         elif program_length == counter:
@@ -171,9 +180,12 @@ def CleanMemoryBeforeExit():
 
 #Função principal
 def Main():
-    ReadCode()
-    InterpretCode()
-    CleanMemoryBeforeExit()
+    try:
+        ReadCode()
+        InterpretCode()
+        CleanMemoryBeforeExit()
+    except:
+        exit()
 
 if __name__ == "__main__":
     Main()
