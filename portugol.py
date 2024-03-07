@@ -1,5 +1,6 @@
 from sys import argv, stdout, exit
 from time import sleep
+from os import path
 
 #Definição do texto de versão
 version_text = """
@@ -63,9 +64,12 @@ def ReadCode():
         content = file.readlines()
         program_content = [code.strip() for code in content]
         program_length = int(len(program_content))-1
-        program_name = program_name.replace(".por", "")
+        program_name = path.basename(program_name.replace(".por", ""))
         
         if program_content[0] != f"algoritmo {program_name}":
+            #print(program_content[0] != f"algoritmo {program_name}")
+            #print(program_content[0])
+            #print(f"algoritmo {program_name}")
             Die("Erro fatal! Escreva 'algoritmo' seguido do nome do programa!")
 
 #Função para interpretar o código
