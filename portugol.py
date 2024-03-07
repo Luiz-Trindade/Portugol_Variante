@@ -64,6 +64,9 @@ def ReadCode():
         program_content = [code.strip() for code in content]
         program_length = int(len(program_content))-1
         program_name = program_name.replace(".por", "")
+        
+        if program_content[0] != f"algoritmo {program_name}":
+            Die("Erro fatal! Escreva 'algoritmo' seguido do nome do programa!")
 
 #Função para interpretar o código
 def InterpretCode():
@@ -90,14 +93,14 @@ def InterpretCode():
         tokens = program_content[counter].split(" ")
 
         #Verifica se o nome do algorítimo é o mesmo do nome do programa
-        if tokens[0] == "algoritmo":
+        """if counter == 0 and tokens[0] == "algoritmo":
             if len(tokens) >= 2 and str(tokens[1]) == program_name:
                 pass
             else:
-                Die("Nome do algoritmo não corresponde ao nome do programa!")
+                Die("Nome do algoritmo não corresponde ao nome do programa!")"""
 
         #Declaração das variáveis de texto
-        elif tokens[0] == "texto:":
+        if tokens[0] == "texto:":
             text_variables = tokens[1:]
             for name in text_variables:
                 program_variables[name] = ""
